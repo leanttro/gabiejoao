@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* --- MANTIDO TODO O CSS ORIGINAL --- */
         :root {
             --primary: #2D4A6E; 
             --primary-light: #5B7AA5;
@@ -33,43 +34,28 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Loading Overlay */
+        /* Loading Overlay (Adicionado discreto) */
         #loader-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #fff; z-index: 99999;
             display: flex; justify-content: center; align-items: center;
-            flex-direction: column;
-            transition: opacity 0.5s ease;
+            flex-direction: column; transition: opacity 0.5s ease;
         }
-        .loader-spinner {
-            border: 4px solid #f3f3f3; border-top: 4px solid var(--primary);
-            border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         /* --- Chuva de Flores --- */
         #flower-fall-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-            overflow: hidden;
+            pointer-events: none; z-index: 9999; overflow: hidden;
         }
-
         .falling-flower {
-            position: absolute;
-            top: -100px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            opacity: 0.6;
-            pointer-events: none;
+            position: absolute; top: -100px; background-size: contain;
+            background-repeat: no-repeat; opacity: 0.6; pointer-events: none;
             animation: fall linear forwards;
         }
-
         @keyframes fall {
             0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
+            10% { opacity: 0.6; } 90% { opacity: 0.6; }
             100% { transform: translateY(110vh) rotate(360deg) translateX(50px); opacity: 0; }
         }
 
@@ -79,282 +65,122 @@
 
         .container { width: 85%; max-width: 1100px; margin: 0 auto; position: relative; }
 
-        /* --- Header & Menu Mobile --- */
         header {
-            position: fixed;
-            top: 0; left: 0; width: 100%; z-index: 1000;
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
             padding: 2rem 0; transition: var(--transition);
         }
         header.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            padding: 1rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
         nav { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: var(--font-serif); font-size: 2.2rem; color: var(--primary); text-decoration: none; letter-spacing: 5px; font-style: italic; z-index: 1001; }
-        
         .nav-links { display: flex; gap: 2rem; list-style: none; }
         .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; opacity: 0.8; }
         .nav-links a:hover { color: var(--primary); opacity: 1; }
-
-        .mobile-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--primary);
-            z-index: 1001;
-        }
+        .mobile-toggle { display: none; cursor: pointer; font-size: 1.5rem; color: var(--primary); z-index: 1001; }
 
         /* --- HERO --- */
-        #home {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .slideshow {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-        }
-
+        #home { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+        .slideshow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
         .slide {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 2.5s ease-in-out;
-            transform: scale(1.1);
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center; opacity: 0;
+            transition: opacity 2.5s ease-in-out; transform: scale(1.1);
         }
-
         .slide.active { opacity: 1; animation: kenBurnsEffect 15s ease-out forwards; }
-
-        @keyframes kenBurnsEffect {
-            0% { transform: scale(1.1); }
-            100% { transform: scale(1.02); }
-        }
-
+        @keyframes kenBurnsEffect { 0% { transform: scale(1.1); } 100% { transform: scale(1.02); } }
         .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.7) 100%);
             z-index: 0;
         }
-
         .hero-content { z-index: 10; padding: 2rem; max-width: 900px; }
-
         .hero-content h1 { 
-            font-size: clamp(3.5rem, 12vw, 8rem); 
-            margin: 0.2rem 0; 
-            color: var(--primary); 
-            font-family: var(--font-serif);
-            font-weight: 800; 
-            line-height: 1;
-            text-shadow: 0 1px 15px rgba(255,255,255,1);
+            font-size: clamp(3.5rem, 12vw, 8rem); margin: 0.2rem 0; 
+            color: var(--primary); font-family: var(--font-serif); font-weight: 800; 
+            line-height: 1; text-shadow: 0 1px 15px rgba(255,255,255,1);
         }
-
         .hero-subtitle { 
-            text-transform: uppercase; 
-            letter-spacing: 6px; 
-            font-size: 1rem; 
-            color: var(--primary); 
-            margin-bottom: 1rem;
-            font-weight: 700; 
+            text-transform: uppercase; letter-spacing: 6px; font-size: 1rem; 
+            color: var(--primary); margin-bottom: 1rem; font-weight: 700; 
             text-shadow: 0 0 20px rgba(255,255,255,1);
         }
-
         .hero-date { 
-            font-size: 2.4rem; 
-            font-family: var(--font-serif); 
-            font-style: italic; 
-            color: var(--text-main); 
-            margin-bottom: 4rem; 
-            letter-spacing: 3px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-            font-weight: 900; 
+            font-size: 2.4rem; font-family: var(--font-serif); font-style: italic; 
+            color: var(--text-main); margin-bottom: 4rem; letter-spacing: 3px;
+            display: flex; align-items: center; justify-content: center; gap: 25px; font-weight: 900; 
         }
-
-        .hero-date::before, .hero-date::after {
-            content: '';
-            width: 70px;
-            height: 4px; 
-            background: var(--primary);
-            display: inline-block;
-        }
-
+        .hero-date::before, .hero-date::after { content: ''; width: 70px; height: 4px; background: var(--primary); display: inline-block; }
         .btn-hero {
-            display: inline-block; 
-            padding: 1.4rem 4.5rem; 
-            background: var(--primary); 
-            color: white;
-            text-decoration: none; 
-            text-transform: uppercase; 
-            font-size: 0.9rem; 
-            letter-spacing: 5px;
-            border-radius: 2px;
-            transition: var(--transition);
-            border: 3px solid var(--primary);
-            font-weight: 800;
-            cursor: pointer;
+            display: inline-block; padding: 1.4rem 4.5rem; background: var(--primary); 
+            color: white; text-decoration: none; text-transform: uppercase; 
+            font-size: 0.9rem; letter-spacing: 5px; border-radius: 2px;
+            transition: var(--transition); border: 3px solid var(--primary); font-weight: 800; cursor: pointer;
         }
+        .btn-hero:hover { background: transparent; color: var(--primary); transform: translateY(-5px); }
 
-        .btn-hero:hover { 
-            background: transparent;
-            color: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        /* --- Seções Estilo --- */
         section { padding: 140px 0; position: relative; }
         .section-header { text-align: center; margin-bottom: 80px; }
         .section-header h2 { font-size: 3.5rem; font-family: var(--font-serif); color: var(--primary); font-weight: 500; }
 
-        /* --- Nossa História --- */
+        /* --- Nossa História (CRÍTICO: Mantido o nth-child para alternar os lados) --- */
         #historia {
-            padding-top: 70px; 
-            padding-bottom: 70px; 
-            background-color: var(--bg-section);
+            padding-top: 70px; padding-bottom: 70px; background-color: var(--bg-section);
             background-image: radial-gradient(circle at 10% 20%, rgba(165, 196, 212, 0.2) 0%, transparent 40%),
                               radial-gradient(circle at 90% 80%, rgba(165, 196, 212, 0.2) 0%, transparent 40%);
         }
+        .history-card { display: flex; gap: 5rem; margin-bottom: 10rem; align-items: center; }
+        #historia .history-card:last-of-type { margin-bottom: 5rem; }
         
-        .history-card {
-            display: flex;
-            gap: 5rem;
-            margin-bottom: 10rem;
-            align-items: center;
-        }
-
-        #historia .history-card:last-of-type {
-            margin-bottom: 5rem; 
-        }
-
+        /* ESTA LINHA FAZ O ZIG-ZAG (FOTO NA ESQUERDA, FOTO NA DIREITA) */
         .history-card:nth-child(even) { flex-direction: row-reverse; }
 
-        .history-img-box {
-            flex: 1.2;
-            position: relative;
-        }
-
-        /* Moldura de Aguarela */
+        .history-img-box { flex: 1.2; position: relative; }
         .history-img-box img {
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-            border-radius: 120px 30px 120px 30px;
-            box-shadow: 25px 25px 70px rgba(0,0,0,0.06);
-            transition: var(--transition);
+            width: 100%; height: 450px; object-fit: cover;
+            border-radius: 120px 30px 120px 30px; /* Borda estilo "Aguarela" mantida */
+            box-shadow: 25px 25px 70px rgba(0,0,0,0.06); transition: var(--transition);
         }
-
         .history-card:hover .history-img-box img { transform: scale(1.03) rotate(1deg); }
-
         .history-text-box { flex: 1; }
         .history-tag { font-family: var(--font-serif); font-size: 4rem; color: var(--accent); font-style: italic; opacity: 0.7; margin-bottom: -15px; display: block; }
         .history-text-box h3 { font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--primary); }
 
-        /* --- Eventos --- */
-        #eventos {
-            padding-top: 70px; 
-        }
+        #eventos { padding-top: 70px; }
         .events-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
         .event-card { background: white; padding: 4rem 2rem; text-align: center; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border: 1px solid rgba(165, 196, 212, 0.2); transition: var(--transition); }
         .event-card:hover { transform: translateY(-10px); }
         .event-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 2rem; }
         .map-wrapper { margin-top: 4rem; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
 
-        /* --- Presentes --- */
-        #presentes {
-            padding-top: 70px; 
-        }
+        #presentes { padding-top: 70px; }
         .pix-area { background: white; padding: 4rem; border-radius: 30px; border: 2px dashed var(--accent); margin: 3rem 0; text-align: center; }
         .pix-key { font-size: 1.4rem; font-weight: 700; color: var(--primary); padding: 15px; background: var(--bg-section); display: inline-block; border-radius: 10px; margin-top: 1rem; }
         .gift-buttons { display: flex; gap: 2rem; justify-content: center; margin-top: 2rem; }
 
-        /* --- Recados --- */
-        #recados {
-            padding-top: 70px; 
-        }
+        #recados { padding-top: 70px; }
         .messages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .message-item { background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border-left: 5px solid var(--accent); font-style: italic; }
 
-        /* --- RSVP --- */
-        #rsvp {
-            padding-top: 70px; /* Reduzido pela metade */
-        }
+        #rsvp { padding-top: 70px; }
         .rsvp-container { max-width: 800px; margin: 0 auto; background: white; padding: 5rem; border-radius: 35px; box-shadow: 0 30px 60px rgba(0,0,0,0.04); border: 1px solid rgba(165, 196, 212, 0.2); }
         .form-control { width: 100%; border: none; border-bottom: 2px solid #E9F0F5; padding: 15px 0; margin-bottom: 2.5rem; font-size: 1.1rem; outline: none; }
 
-        /* --- Modal de Recados --- */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 2000; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.5); 
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 10% auto; 
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid #888;
-            width: 90%; 
-            max-width: 600px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
-            position: relative;
-            animation: modalFadeIn 0.3s;
-        }
-
-        @keyframes modalFadeIn {
-            from {opacity: 0; transform: translateY(-50px);}
-            to {opacity: 1; transform: translateY(0);}
-        }
-
-        .close-modal {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close-modal:hover,
-        .close-modal:focus {
-            color: var(--primary);
-            text-decoration: none;
-            cursor: pointer;
-        }
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); backdrop-filter: blur(5px); }
+        .modal-content { background-color: #fefefe; margin: 10% auto; padding: 40px; border-radius: 20px; border: 1px solid #888; width: 90%; max-width: 600px; box-shadow: 0 5px 30px rgba(0,0,0,0.3); position: relative; animation: modalFadeIn 0.3s; }
+        @keyframes modalFadeIn { from {opacity: 0; transform: translateY(-50px);} to {opacity: 1; transform: translateY(0);} }
+        .close-modal { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .close-modal:hover { color: var(--primary); }
 
         footer { background: var(--primary); color: white; text-align: center; padding: 90px 0; }
 
         @media (max-width: 900px) {
             .mobile-toggle { display: block; }
-            .nav-links {
-                position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
-                background: white; flex-direction: column; justify-content: center; align-items: center;
-                gap: 2.5rem; transition: 0.5s; box-shadow: -15px 0 40px rgba(0,0,0,0.05); z-index: 1000;
-            }
+            .nav-links { position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: white; flex-direction: column; justify-content: center; align-items: center; gap: 2.5rem; transition: 0.5s; box-shadow: -15px 0 40px rgba(0,0,0,0.05); z-index: 1000; }
             .nav-links.active { right: 0; }
-            
-            /* Ajuste Mobile História */
             .history-card, .history-card:nth-child(even) { flex-direction: column; gap: 3rem; text-align: center; }
             .history-img-box img { height: 350px; }
-            
             .events-grid { grid-template-columns: 1fr; }
             .hero-content h1 { font-size: 3.8rem; }
             .gift-buttons { flex-direction: column; }
@@ -364,8 +190,7 @@
 <body>
 
     <div id="loader-overlay">
-        <div class="loader-spinner"></div>
-        <p style="margin-top:20px; color: #2D4A6E; font-family: 'Montserrat', sans-serif;">Carregando...</p>
+        <i class="fas fa-heart fa-spin" style="font-size: 3rem; color: #2D4A6E;"></i>
     </div>
 
     <div id="flower-fall-container"></div>
@@ -428,7 +253,19 @@
             <div id="historia-container">
                 <div class="history-card reveal">
                     <div class="history-img-box"><img src="historia1.png" alt="O Início"></div>
-                    <div class="history-text-box"><span class="history-tag">2018</span><h3>O Primeiro Olhar</h3><p>Nos conhecemos em uma cafeteria...</p></div>
+                    <div class="history-text-box">
+                        <span class="history-tag">2018</span>
+                        <h3>O Primeiro Olhar</h3>
+                        <p>Nos conhecemos em uma cafeteria num dia chuvoso.</p>
+                    </div>
+                </div>
+                <div class="history-card reveal">
+                    <div class="history-img-box"><img src="historia2.png" alt="A Certeza"></div>
+                    <div class="history-text-box">
+                        <span class="history-tag">2020</span>
+                        <h3>A Certeza</h3>
+                        <p>Durante uma viagem inesquecível...</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -445,6 +282,7 @@
                     <i class="fas fa-church"></i>
                     <h3>Cerimônia</h3>
                     <p>27 de Fevereiro de 2026<br>16:30h</p>
+                    <p style="margin-top: 10px; font-weight: 700;">Local a definir</p>
                 </div>
             </div>
 
@@ -462,15 +300,15 @@
             <div class="pix-area reveal">
                 <i class="fas fa-heart" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem;"></i>
                 <h3>Presente via PIX</h3>
-                <div class="pix-key" id="pix-key-text">carregando...</div>
+                <div class="pix-key" id="pix-key-text">chave-pix-noivos@email.com</div>
                 <div style="margin-top: 15px;">
                     <button id="btn-copy-pix" class="btn-hero" style="padding: 1rem 2rem; font-size: 0.8rem;">Copiar Chave</button>
                 </div>
                 <p style="margin-top: 1rem; color: var(--text-muted);">Copie a chave para contribuir com nossa Lua de Mel.</p>
             </div>
             <div class="gift-buttons reveal">
-                <a href="#" id="link-lista-1" class="btn-hero" style="font-size: 0.7rem; padding: 1rem 2rem;">Lista 1</a>
-                <a href="#" id="link-lista-2" class="btn-hero" style="font-size: 0.7rem; padding: 1rem 2rem;">Lista 2</a>
+                <a href="#" id="link-lista-1" class="btn-hero" style="font-size: 0.7rem; padding: 1rem 2rem;">Lista Magalu</a>
+                <a href="#" id="link-lista-2" class="btn-hero" style="font-size: 0.7rem; padding: 1rem 2rem;">Lista Camicado</a>
             </div>
         </div>
     </section>
@@ -484,7 +322,10 @@
                 </div>
             </div>
             <div class="messages-grid" id="recados-container">
-                <p style="text-align: center; width: 100%;">Carregando mensagens...</p>
+                <div class="message-item reveal">
+                    <p>"Estamos muito felizes por fazer parte deste dia!"</p>
+                    <span style="display:block; margin-top:1rem; font-weight:700;">— Amigos</span>
+                </div>
             </div>
         </div>
     </section>
@@ -496,11 +337,11 @@
             <form id="message-form">
                 <input type="text" id="msg_name" class="form-control" placeholder="Seu Nome" required>
                 <input type="text" id="msg_code" class="form-control" placeholder="Código do Convite (Opcional)">
-                <textarea id="message_text" class="form-control" placeholder="Escreva sua mensagem para os noivos..." rows="4" required style="border-bottom: 2px solid #E9F0F5; resize: none;"></textarea>
+                <textarea id="message_text" class="form-control" placeholder="Escreva sua mensagem..." rows="4" required style="border-bottom: 2px solid #E9F0F5; resize: none;"></textarea>
                 <button type="submit" class="btn-hero" style="width: 100%; margin-top: 1rem;">Enviar para Aprovação</button>
             </form>
             <div id="message-feedback" style="display:none; text-align:center; margin-top: 1rem; color: var(--primary); font-weight: bold;">
-                Mensagem enviada com sucesso! Aguarde a aprovação.
+                Mensagem enviada!
             </div>
         </div>
     </div>
@@ -521,12 +362,11 @@
                         <option value="2">2 Pessoas</option>
                         <option value="3">3 Pessoas</option>
                         <option value="4">4 Pessoas</option>
-                        <option value="5">5 Pessoas</option>
                     </select>
                     <button type="submit" class="btn-hero" style="width: 100%;">Confirmar Agora</button>
                 </form>
                 <div id="form-feedback" style="display:none; text-align:center; margin-top: 2rem;">
-                    <h3 style="font-family: var(--font-serif); font-size: 2rem; color: var(--primary);">Obrigado! Presença confirmada.</h3>
+                    <h3 style="font-family: var(--font-serif); font-size: 2rem; color: var(--primary);">Obrigado!</h3>
                 </div>
             </div>
         </div>
@@ -540,76 +380,67 @@
     </footer>
 
     <script>
-        // --- CONFIGURAÇÕES ---
+        // --- CONFIGURAÇÃO ---
         const DIRECTUS_URL = "https://eventosdirectus.leanttro.com"; 
 
-        // Helper para URL de Imagem
         function getImgUrl(fileId) {
             if (!fileId) return null;
             return `${DIRECTUS_URL}/assets/${fileId}`;
         }
 
-        // --- FUNÇÃO PRINCIPAL DE CARREGAMENTO ---
         async function loadSiteData() {
             try {
                 // 1. Configurações Gerais
                 const configReq = await fetch(`${DIRECTUS_URL}/items/configuracoes_gerais`);
                 const configResponse = await configReq.json();
                 
-                // Tratamento seguro para saber se é Array ou Objeto
                 let config = null;
                 if (configResponse.data) {
-                    if (Array.isArray(configResponse.data)) {
-                        config = configResponse.data[0]; // Pega o primeiro item se for lista
-                    } else {
-                        config = configResponse.data; // Pega direto se for objeto
-                    }
+                    config = Array.isArray(configResponse.data) ? configResponse.data[0] : configResponse.data;
                 }
 
                 if(config) {
-                    // Atualiza textos
                     document.title = config.titulo_site || "Casamento";
                     if(document.getElementById('nav-logo')) document.getElementById('nav-logo').innerText = config.titulo_site;
                     if(document.getElementById('hero-title')) document.getElementById('hero-title').innerText = config.titulo_site;
                     if(document.getElementById('footer-logo')) document.getElementById('footer-logo').innerText = config.titulo_site;
                     if(document.getElementById('hero-subtitle')) document.getElementById('hero-subtitle').innerText = config.subtitulo_hero;
+                    
                     if(document.getElementById('texto-casal')) document.getElementById('texto-casal').innerText = config.texto_casal;
                     if(document.getElementById('assinatura-casal')) document.getElementById('assinatura-casal').innerText = config.titulo_site;
                     
-                    // PIX e Mapas
                     if(document.getElementById('pix-key-text')) document.getElementById('pix-key-text').innerText = config.chave_pix;
-                    if(document.getElementById('mapa-iframe') && config.iframe_mapa) document.getElementById('mapa-iframe').src = config.iframe_mapa;
+                    
+                    // Mapa (Só atualiza se existir para não dar 404)
+                    if(document.getElementById('mapa-iframe') && config.iframe_mapa) {
+                        document.getElementById('mapa-iframe').src = config.iframe_mapa;
+                    }
 
-                    // Links de lista
                     if(document.getElementById('link-lista-1')) document.getElementById('link-lista-1').href = config.link_lista_1 || "#";
                     if(document.getElementById('link-lista-2')) document.getElementById('link-lista-2').href = config.link_lista_2 || "#";
 
-                    // Foto do Casal (prioriza directus, senao mantem a local)
                     if(config.foto_casal) {
                         document.getElementById('casal-foto').src = getImgUrl(config.foto_casal);
                     }
 
-                    // Data
                     if(config.data_casamento) {
                         const dataObj = new Date(config.data_casamento);
-                        const userTimezoneOffset = dataObj.getTimezoneOffset() * 60000;
-                        const dataCorrigida = new Date(dataObj.getTime() + userTimezoneOffset);
-                        
+                        const dataCorrigida = new Date(dataObj.getTime() + dataObj.getTimezoneOffset() * 60000);
                         document.getElementById('hero-date').innerText = dataCorrigida.toLocaleDateString('pt-BR').replace(/\//g, ' . ');
                         document.getElementById('footer-date').innerText = `BRASÍLIA • ${dataCorrigida.getFullYear()}`;
                     }
                 }
 
-                // 2. História
+                // 2. História (MANTENDO O LAYOUT ALTERNADO)
                 const histReq = await fetch(`${DIRECTUS_URL}/items/historia?sort=sort`);
                 const histData = await histReq.json();
                 const histContainer = document.getElementById('historia-container');
                 
                 if(histData.data && Array.isArray(histData.data) && histData.data.length > 0) {
-                    histContainer.innerHTML = ''; // Limpa o fallback
+                    histContainer.innerHTML = ''; // Limpa o padrão
                     histData.data.forEach((item) => {
-                        // Usa imagem do banco ou fallback local 'historia1.png' se falhar
                         const imgUrl = getImgUrl(item.foto) || 'historia1.png';
+                        // AQUI ESTÁ A MÁGICA: A classe 'history-card' é igual ao original, então o CSS nth-child funciona
                         const html = `
                         <div class="history-card reveal">
                             <div class="history-img-box">
@@ -649,7 +480,7 @@
                     });
                 }
 
-                // 4. Recados (Aprovados)
+                // 4. Recados
                 const recadosReq = await fetch(`${DIRECTUS_URL}/items/recados?filter[status][_eq]=published&sort=-date_created&limit=6`);
                 if (recadosReq.ok) {
                     const recadosData = await recadosReq.json();
@@ -665,114 +496,20 @@
                             </div>`;
                             recadosContainer.innerHTML += html;
                         });
-                    } else {
-                        recadosContainer.innerHTML = '<p style="text-align:center; width:100%;">Seja o primeiro a deixar um recado!</p>';
                     }
                 }
 
             } catch (error) {
-                console.error("Erro ao carregar dados:", error);
-                // Em caso de erro, o site mantém os textos estáticos do HTML original (fallback)
+                console.error("Usando modo offline (erro API):", error);
             } finally {
-                // Remove tela de loading
                 const loader = document.getElementById('loader-overlay');
-                if(loader) {
-                    loader.style.opacity = '0';
-                    setTimeout(() => loader.remove(), 500);
-                }
+                if(loader) { loader.style.opacity = '0'; setTimeout(() => loader.remove(), 500); }
             }
         }
 
-        // --- ENVIAR DADOS (FORMS) ---
-        
-        // Form RSVP
-        const rsvpForm = document.getElementById('rsvp-form');
-        rsvpForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btn = rsvpForm.querySelector('button');
-            btn.textContent = 'Enviando...';
-            btn.disabled = true;
-
-            const payload = {
-                codigo_convite: document.getElementById('rsvp_code').value,
-                nome_completo: document.getElementById('rsvp_name').value,
-                email: document.getElementById('rsvp_email').value,
-                qtd_convidados: parseInt(document.getElementById('rsvp_guests').value)
-            };
-
-            try {
-                const response = await fetch(`${DIRECTUS_URL}/items/rsvp`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if(response.ok) {
-                    rsvpForm.style.display = 'none';
-                    document.getElementById('form-feedback').style.display = 'block';
-                } else {
-                    alert('Erro ao enviar. Tente novamente.');
-                    btn.textContent = 'Tentar Novamente';
-                    btn.disabled = false;
-                }
-            } catch (err) {
-                console.error(err);
-                alert('Erro de conexão.');
-                btn.disabled = false;
-            }
-        });
-
-        // Form Recados
-        const msgForm = document.getElementById("message-form");
-        msgForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btn = msgForm.querySelector('button');
-            btn.textContent = 'Enviando...';
-            btn.disabled = true;
-
-            const payload = {
-                nome_remetente: document.getElementById('msg_name').value,
-                codigo_convite: document.getElementById('msg_code').value,
-                mensagem: document.getElementById('message_text').value,
-                status: 'draft' // Salva como rascunho para você aprovar depois
-            };
-
-            try {
-                const response = await fetch(`${DIRECTUS_URL}/items/recados`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if(response.ok) {
-                    msgForm.style.display = 'none';
-                    document.getElementById('message-feedback').style.display = 'block';
-                    setTimeout(() => {
-                        document.getElementById("messageModal").style.display = "none";
-                        msgForm.reset();
-                        msgForm.style.display = 'block';
-                        document.getElementById('message-feedback').style.display = 'none';
-                        btn.textContent = 'Enviar para Aprovação';
-                        btn.disabled = false;
-                    }, 2500);
-                } else {
-                    alert('Erro ao enviar mensagem.');
-                    btn.textContent = 'Tentar Novamente';
-                    btn.disabled = false;
-                }
-            } catch (err) {
-                console.error(err);
-                alert('Erro de conexão.');
-                btn.disabled = false;
-            }
-        });
-
-        // --- EFEITOS VISUAIS (CHUVA, SLIDESHOW, REVEAL) ---
-        
-        // Chuva de Flores
+        // --- SCRIPTS VISUAIS ORIGINAIS (CHUVA, SLIDES, ETC) ---
         const flowerContainer = document.getElementById('flower-fall-container');
-        // Usa nomes de arquivos locais. Se não existirem, não aparecerão.
-        const flowerImages = ['flor1.png', 'flor2.png', 'flor3.png', 'flor4.png']; 
+        const flowerImages = ['flor1.png', 'flor2.png', 'flor3.png', 'flor4.png'];
         function createFlower() {
             const flower = document.createElement('div');
             flower.classList.add('falling-flower');
@@ -787,7 +524,6 @@
         }
         setInterval(createFlower, 600);
 
-        // Slideshow
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
         function nextSlide() {
@@ -799,14 +535,12 @@
         }
         setInterval(nextSlide, 6000);
 
-        // Header Scroll
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) header.classList.add('scrolled');
             else header.classList.remove('scrolled');
         });
 
-        // Menu Mobile
         const mobileToggle = document.getElementById('mobile-toggle');
         const navMenu = document.getElementById('nav-menu');
         mobileToggle.addEventListener('click', () => {
@@ -815,46 +549,69 @@
             mobileToggle.querySelector('i').classList.toggle('fa-times');
         });
 
-        // Reveal Animation
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
-        
-        // Verifica novos elementos periodicamente (para conteúdo carregado via AJAX)
-        setInterval(() => {
-            document.querySelectorAll('.reveal:not(.active)').forEach(el => observer.observe(el));
-        }, 1000);
+        setInterval(() => { document.querySelectorAll('.reveal:not(.active)').forEach(el => observer.observe(el)); }, 1000);
 
-        // Copiar PIX
         const btnCopyPix = document.getElementById('btn-copy-pix');
         btnCopyPix.addEventListener('click', () => {
             const pixKey = document.getElementById('pix-key-text').innerText;
             navigator.clipboard.writeText(pixKey).then(() => {
                 const originalText = btnCopyPix.innerText;
                 btnCopyPix.innerText = "Copiado!";
-                btnCopyPix.style.backgroundColor = "#2C3E50"; 
-                btnCopyPix.style.color = "#fff";
-                setTimeout(() => {
-                    btnCopyPix.innerText = originalText;
-                    btnCopyPix.style.backgroundColor = "var(--primary)";
-                }, 2000);
+                setTimeout(() => { btnCopyPix.innerText = originalText; }, 2000);
             });
         });
 
-        // Modal Lógica
         const modal = document.getElementById("messageModal");
         const btnOpenModal = document.getElementById("btn-open-modal");
         const spanClose = document.getElementsByClassName("close-modal")[0];
-
         btnOpenModal.onclick = function() { modal.style.display = "block"; }
         spanClose.onclick = function() { modal.style.display = "none"; }
         window.onclick = function(event) { if (event.target == modal) modal.style.display = "none"; }
 
-        // INICIAR TUDO
-        window.addEventListener('DOMContentLoaded', loadSiteData);
+        // Form RSVP
+        const rsvpForm = document.getElementById('rsvp-form');
+        rsvpForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = rsvpForm.querySelector('button');
+            btn.textContent = 'Enviando...'; btn.disabled = true;
+            try {
+                const payload = {
+                    codigo_convite: document.getElementById('rsvp_code').value,
+                    nome_completo: document.getElementById('rsvp_name').value,
+                    email: document.getElementById('rsvp_email').value,
+                    qtd_convidados: parseInt(document.getElementById('rsvp_guests').value)
+                };
+                const res = await fetch(`${DIRECTUS_URL}/items/rsvp`, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+                if(res.ok) { rsvpForm.style.display='none'; document.getElementById('form-feedback').style.display='block'; }
+                else { alert('Erro.'); btn.disabled=false; btn.textContent='Confirmar Agora'; }
+            } catch(e) { alert('Erro de conexão'); btn.disabled=false; }
+        });
 
+        // Form Recados
+        const msgForm = document.getElementById("message-form");
+        msgForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = msgForm.querySelector('button');
+            btn.textContent = 'Enviando...'; btn.disabled = true;
+            try {
+                const payload = {
+                    nome_remetente: document.getElementById('msg_name').value,
+                    codigo_convite: document.getElementById('msg_code').value,
+                    mensagem: document.getElementById('message_text').value,
+                    status: 'draft'
+                };
+                const res = await fetch(`${DIRECTUS_URL}/items/recados`, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+                if(res.ok) { 
+                    msgForm.style.display='none'; document.getElementById('message-feedback').style.display='block';
+                    setTimeout(() => { modal.style.display='none'; msgForm.reset(); msgForm.style.display='block'; document.getElementById('message-feedback').style.display='none'; btn.textContent='Enviar'; btn.disabled=false; }, 2000);
+                } else { alert('Erro.'); btn.disabled=false; }
+            } catch(e) { alert('Erro de conexão'); btn.disabled=false; }
+        });
+
+        window.addEventListener('DOMContentLoaded', loadSiteData);
     </script>
 </body>
 </html>
