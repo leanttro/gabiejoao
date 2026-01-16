@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carregando...</title> <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Gabi & João | Nosso Casamento</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -32,13 +34,18 @@
         }
 
         /* Loading Overlay */
-        #loader {
-            position: fixed; top:0; left:0; width:100%; height:100%;
-            background: white; z-index: 10000;
+        #loader-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #fff; z-index: 99999;
             display: flex; justify-content: center; align-items: center;
-            font-family: var(--font-serif); font-size: 2rem; color: var(--primary);
-            transition: opacity 0.5s;
+            flex-direction: column;
+            transition: opacity 0.5s ease;
         }
+        .loader-spinner {
+            border: 4px solid #f3f3f3; border-top: 4px solid var(--primary);
+            border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         /* --- Chuva de Flores --- */
         #flower-fall-container {
@@ -355,8 +362,11 @@
     </style>
 </head>
 <body>
-    
-    <div id="loader">Carregando Amor...</div>
+
+    <div id="loader-overlay">
+        <div class="loader-spinner"></div>
+        <p style="margin-top:20px; color: #2D4A6E; font-family: 'Montserrat', sans-serif;">Carregando...</p>
+    </div>
 
     <div id="flower-fall-container"></div>
 
@@ -367,7 +377,7 @@
                 <ul class="nav-links" id="nav-menu">
                     <li><a href="#home">Início</a></li>
                     <li><a href="#casal">O Casal</a></li>
-                    <li><a href="#historia">Nossa História</a></li>
+                    <li><a href="#historia">História</a></li>
                     <li><a href="#eventos">Eventos</a></li>
                     <li><a href="#presentes">Presentes</a></li>
                     <li><a href="#recados">Recados</a></li>
@@ -379,13 +389,16 @@
     </header>
 
     <section id="home">
-        <div class="slideshow" id="hero-slideshow">
-            </div>
+        <div class="slideshow">
+            <div class="slide active" style="background-image: url('hero1.png');"></div>
+            <div class="slide" style="background-image: url('hero2.png');"></div>
+            <div class="slide" style="background-image: url('hero3.png');"></div>
+        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content reveal">
-            <p class="hero-subtitle" id="hero-subtitle">Carregando...</p>
-            <h1 id="hero-title">...</h1>
-            <p class="hero-date" id="hero-date">...</p>
+            <p class="hero-subtitle" id="hero-subtitle">Com a bênção de nossos pais,</p>
+            <h1 id="hero-title">Gabi & João</h1>
+            <p class="hero-date" id="hero-date">27 . 02 . 2026</p>
             <a href="#rsvp" class="btn-hero">Confirmar Presença</a>
         </div>
     </section>
@@ -394,12 +407,12 @@
         <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;">
                 <div class="reveal">
-                    <img src="" alt="O Casal" id="casal-foto" style="width: 100%; border-radius: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.05);">
+                    <img src="casal_perfil.png" id="casal-foto" alt="O Casal" style="width: 100%; border-radius: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.05);">
                 </div>
                 <div class="reveal">
                     <h2 style="font-family: var(--font-serif); font-size: 3rem; margin-bottom: 2rem;">O Casal</h2>
-                    <p id="casal-texto">...</p>
-                    <div style="font-family: var(--font-serif); font-size: 2.5rem; font-style: italic; color: var(--primary); margin-top: 3rem;" id="casal-assinatura">...</div>
+                    <p id="texto-casal">Nossa jornada começou com um simples encontro e floresceu em uma vida compartilhada cheia de sonhos. Cada passo que demos nos trouxe até este momento único.</p>
+                    <div id="assinatura-casal" style="font-family: var(--font-serif); font-size: 2.5rem; font-style: italic; color: var(--primary); margin-top: 3rem;">Gabi & João</div>
                 </div>
             </div>
         </div>
@@ -411,8 +424,13 @@
                 <h2>Nossa História</h2>
                 <p>Momentos inesquecíveis da nossa caminhada.</p>
             </div>
+
             <div id="historia-container">
+                <div class="history-card reveal">
+                    <div class="history-img-box"><img src="historia1.png" alt="O Início"></div>
+                    <div class="history-text-box"><span class="history-tag">2018</span><h3>O Primeiro Olhar</h3><p>Nos conhecemos em uma cafeteria...</p></div>
                 </div>
+            </div>
         </div>
     </section>
 
@@ -421,8 +439,15 @@
             <div class="section-header reveal">
                 <h2>Onde e Quando</h2>
             </div>
+            
             <div class="events-grid" id="eventos-container">
+                <div class="event-card reveal">
+                    <i class="fas fa-church"></i>
+                    <h3>Cerimônia</h3>
+                    <p>27 de Fevereiro de 2026<br>16:30h</p>
                 </div>
+            </div>
+
             <div class="map-wrapper reveal">
                 <iframe id="mapa-iframe" src="" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
@@ -437,15 +462,15 @@
             <div class="pix-area reveal">
                 <i class="fas fa-heart" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem;"></i>
                 <h3>Presente via PIX</h3>
-                <div class="pix-key" id="pix-key-text">Carregando...</div>
+                <div class="pix-key" id="pix-key-text">carregando...</div>
                 <div style="margin-top: 15px;">
                     <button id="btn-copy-pix" class="btn-hero" style="padding: 1rem 2rem; font-size: 0.8rem;">Copiar Chave</button>
                 </div>
                 <p style="margin-top: 1rem; color: var(--text-muted);">Copie a chave para contribuir com nossa Lua de Mel.</p>
             </div>
             <div class="gift-buttons reveal">
-                <a href="#" id="btn-lista-1" class="btn-hero" style="font-size: 0.7rem; padding: 1rem 2rem; display:none;">Lista 1</a>
-                <a href="#" id="btn-lista-2" class="btn-hero" style="font-size: 0.7rem; padding: 1rem 2rem; display:none;">Lista 2</a>
+                <a href="#" id="link-lista-1" class="btn-hero" style="font-size: 0.7rem; padding: 1rem 2rem;">Lista 1</a>
+                <a href="#" id="link-lista-2" class="btn-hero" style="font-size: 0.7rem; padding: 1rem 2rem;">Lista 2</a>
             </div>
         </div>
     </section>
@@ -459,7 +484,8 @@
                 </div>
             </div>
             <div class="messages-grid" id="recados-container">
-                </div>
+                <p style="text-align: center; width: 100%;">Carregando mensagens...</p>
+            </div>
         </div>
     </section>
 
@@ -474,7 +500,7 @@
                 <button type="submit" class="btn-hero" style="width: 100%; margin-top: 1rem;">Enviar para Aprovação</button>
             </form>
             <div id="message-feedback" style="display:none; text-align:center; margin-top: 1rem; color: var(--primary); font-weight: bold;">
-                Mensagem enviada para aprovação!
+                Mensagem enviada com sucesso! Aguarde a aprovação.
             </div>
         </div>
     </div>
@@ -483,7 +509,7 @@
         <div class="container">
             <div class="section-header reveal">
                 <h2>Confirmar Presença</h2>
-                <p>Por favor, confirme até a data informada.</p>
+                <p>Por favor, confirme sua presença.</p>
             </div>
             <div class="rsvp-container reveal">
                 <form id="rsvp-form">
@@ -496,15 +522,11 @@
                         <option value="3">3 Pessoas</option>
                         <option value="4">4 Pessoas</option>
                         <option value="5">5 Pessoas</option>
-                        <option value="6">6 Pessoas</option>
                     </select>
                     <button type="submit" class="btn-hero" style="width: 100%;">Confirmar Agora</button>
                 </form>
                 <div id="form-feedback" style="display:none; text-align:center; margin-top: 2rem;">
                     <h3 style="font-family: var(--font-serif); font-size: 2rem; color: var(--primary);">Obrigado! Presença confirmada.</h3>
-                </div>
-                <div id="form-error" style="display:none; text-align:center; margin-top: 2rem; color: red;">
-                    Erro ao confirmar. Verifique os dados.
                 </div>
             </div>
         </div>
@@ -512,143 +534,164 @@
 
     <footer>
         <div class="container">
-            <div class="footer-logo" id="footer-text">Gabi & João</div>
-            <p id="footer-date">2026</p>
+            <div class="footer-logo" id="footer-logo">Gabi & João</div>
+            <p id="footer-date">BRASÍLIA • 2026</p>
         </div>
     </footer>
 
     <script>
-        // --- CONFIGURAÇÃO DIRECTUS ---
-        const DIRECTUS_URL = "https://eventosdirectus.leanttro.com"; // Seu domínio
-        
-        // Função Helper para pegar URL da Imagem
+        // --- CONFIGURAÇÕES ---
+        const DIRECTUS_URL = "https://eventosdirectus.leanttro.com"; 
+
+        // Helper para URL de Imagem
         function getImgUrl(fileId) {
-            if (!fileId) return '';
+            if (!fileId) return null;
             return `${DIRECTUS_URL}/assets/${fileId}`;
         }
 
-        // Função Principal de Carregamento
+        // --- FUNÇÃO PRINCIPAL DE CARREGAMENTO ---
         async function loadSiteData() {
             try {
-                // 1. Carregar Configurações Gerais (Singleton)
+                // 1. Configurações Gerais
                 const configReq = await fetch(`${DIRECTUS_URL}/items/configuracoes_gerais`);
-                const configData = await configReq.json();
-                const config = configData.data;
-
-                // Preencher HTML
-                document.title = config.titulo_site;
-                document.getElementById('nav-logo').innerText = config.titulo_site;
-                document.getElementById('footer-text').innerText = config.titulo_site;
-                document.getElementById('hero-title').innerText = config.titulo_site;
-                document.getElementById('casal-assinatura').innerText = config.titulo_site;
-                document.getElementById('hero-subtitle').innerText = config.subtitulo_hero;
-                document.getElementById('casal-texto').innerText = config.texto_casal;
-                document.getElementById('casal-foto').src = getImgUrl(config.foto_casal);
-                document.getElementById('pix-key-text').innerText = config.chave_pix;
-                document.getElementById('mapa-iframe').src = config.iframe_mapa;
-
-                // Formatar Data
-                const dataObj = new Date(config.data_casamento);
-                const dataFormatada = dataObj.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, ' . ');
-                document.getElementById('hero-date').innerText = dataFormatada;
-                document.getElementById('footer-date').innerText = `BRASÍLIA • ${dataObj.getFullYear()}`;
-
-                // Botões de Lista
-                if(config.link_lista_1) {
-                    const btn1 = document.getElementById('btn-lista-1');
-                    btn1.href = config.link_lista_1;
-                    btn1.style.display = 'inline-block';
-                    btn1.innerText = "Lista de Presentes 1";
-                }
-                if(config.link_lista_2) {
-                    const btn2 = document.getElementById('btn-lista-2');
-                    btn2.href = config.link_lista_2;
-                    btn2.style.display = 'inline-block';
-                    btn2.innerText = "Lista de Presentes 2";
-                }
-
-                // Slideshow Hero (Se você tiver um campo imagens_hero (multiplas) ou usar fixo, aqui deixei pra ser 3 fixas no CSS, mas você pode adaptar)
-                // Se quiser dinâmico, precisaria de uma tabela de 'banners' ou campo repeater.
+                const configResponse = await configReq.json();
                 
-                // 2. Carregar História
+                // Tratamento seguro para saber se é Array ou Objeto
+                let config = null;
+                if (configResponse.data) {
+                    if (Array.isArray(configResponse.data)) {
+                        config = configResponse.data[0]; // Pega o primeiro item se for lista
+                    } else {
+                        config = configResponse.data; // Pega direto se for objeto
+                    }
+                }
+
+                if(config) {
+                    // Atualiza textos
+                    document.title = config.titulo_site || "Casamento";
+                    if(document.getElementById('nav-logo')) document.getElementById('nav-logo').innerText = config.titulo_site;
+                    if(document.getElementById('hero-title')) document.getElementById('hero-title').innerText = config.titulo_site;
+                    if(document.getElementById('footer-logo')) document.getElementById('footer-logo').innerText = config.titulo_site;
+                    if(document.getElementById('hero-subtitle')) document.getElementById('hero-subtitle').innerText = config.subtitulo_hero;
+                    if(document.getElementById('texto-casal')) document.getElementById('texto-casal').innerText = config.texto_casal;
+                    if(document.getElementById('assinatura-casal')) document.getElementById('assinatura-casal').innerText = config.titulo_site;
+                    
+                    // PIX e Mapas
+                    if(document.getElementById('pix-key-text')) document.getElementById('pix-key-text').innerText = config.chave_pix;
+                    if(document.getElementById('mapa-iframe') && config.iframe_mapa) document.getElementById('mapa-iframe').src = config.iframe_mapa;
+
+                    // Links de lista
+                    if(document.getElementById('link-lista-1')) document.getElementById('link-lista-1').href = config.link_lista_1 || "#";
+                    if(document.getElementById('link-lista-2')) document.getElementById('link-lista-2').href = config.link_lista_2 || "#";
+
+                    // Foto do Casal (prioriza directus, senao mantem a local)
+                    if(config.foto_casal) {
+                        document.getElementById('casal-foto').src = getImgUrl(config.foto_casal);
+                    }
+
+                    // Data
+                    if(config.data_casamento) {
+                        const dataObj = new Date(config.data_casamento);
+                        const userTimezoneOffset = dataObj.getTimezoneOffset() * 60000;
+                        const dataCorrigida = new Date(dataObj.getTime() + userTimezoneOffset);
+                        
+                        document.getElementById('hero-date').innerText = dataCorrigida.toLocaleDateString('pt-BR').replace(/\//g, ' . ');
+                        document.getElementById('footer-date').innerText = `BRASÍLIA • ${dataCorrigida.getFullYear()}`;
+                    }
+                }
+
+                // 2. História
                 const histReq = await fetch(`${DIRECTUS_URL}/items/historia?sort=sort`);
                 const histData = await histReq.json();
                 const histContainer = document.getElementById('historia-container');
                 
-                histData.data.forEach((item) => {
-                    const html = `
-                    <div class="history-card reveal">
-                        <div class="history-img-box">
-                            <img src="${getImgUrl(item.foto)}" alt="${item.titulo}">
-                        </div>
-                        <div class="history-text-box">
-                            <span class="history-tag">${item.ano}</span>
-                            <h3>${item.titulo}</h3>
-                            <p>${item.descricao}</p>
-                        </div>
-                    </div>`;
-                    histContainer.innerHTML += html;
-                });
+                if(histData.data && Array.isArray(histData.data) && histData.data.length > 0) {
+                    histContainer.innerHTML = ''; // Limpa o fallback
+                    histData.data.forEach((item) => {
+                        // Usa imagem do banco ou fallback local 'historia1.png' se falhar
+                        const imgUrl = getImgUrl(item.foto) || 'historia1.png';
+                        const html = `
+                        <div class="history-card reveal">
+                            <div class="history-img-box">
+                                <img src="${imgUrl}" alt="${item.titulo}">
+                            </div>
+                            <div class="history-text-box">
+                                <span class="history-tag">${item.ano}</span>
+                                <h3>${item.titulo}</h3>
+                                <p>${item.descricao}</p>
+                            </div>
+                        </div>`;
+                        histContainer.innerHTML += html;
+                    });
+                }
 
-                // 3. Carregar Eventos
+                // 3. Eventos
                 const eventReq = await fetch(`${DIRECTUS_URL}/items/eventos?sort=sort`);
                 const eventData = await eventReq.json();
                 const eventContainer = document.getElementById('eventos-container');
                 
-                eventData.data.forEach(item => {
-                    const dataEvento = new Date(item.data_hora);
-                    const dia = dataEvento.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
-                    const hora = dataEvento.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-                    
-                    const html = `
-                    <div class="event-card reveal">
-                        <i class="fas ${item.icone}"></i>
-                        <h3>${item.titulo}</h3>
-                        <p>${dia}<br>${hora}h</p>
-                        <p style="margin-top: 10px; font-weight: 700;">${item.local_nome}</p>
-                    </div>`;
-                    eventContainer.innerHTML += html;
-                });
+                if(eventData.data && Array.isArray(eventData.data) && eventData.data.length > 0) {
+                    eventContainer.innerHTML = ''; 
+                    eventData.data.forEach(item => {
+                        const dataEvento = new Date(item.data_hora);
+                        const dia = dataEvento.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
+                        const hora = dataEvento.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+                        const iconeClass = item.icone || 'fa-calendar-alt';
 
-                // 4. Carregar Recados (Aprovados)
-                const recadosReq = await fetch(`${DIRECTUS_URL}/items/recados?filter[status][_eq]=published&sort=-date_created&limit=6`);
-                const recadosData = await recadosReq.json();
-                const recadosContainer = document.getElementById('recados-container');
-
-                if(recadosData.data.length > 0) {
-                    recadosData.data.forEach(msg => {
                         const html = `
-                        <div class="message-item reveal">
-                            <p>"${msg.mensagem}"</p>
-                            <span style="display:block; margin-top:1rem; font-weight:700;">— ${msg.nome_remetente}</span>
+                        <div class="event-card reveal">
+                            <i class="fas ${iconeClass}"></i>
+                            <h3>${item.titulo}</h3>
+                            <p>${dia}<br>${hora}h</p>
+                            <p style="margin-top: 10px; font-weight: 700;">${item.local_nome}</p>
                         </div>`;
-                        recadosContainer.innerHTML += html;
+                        eventContainer.innerHTML += html;
                     });
-                } else {
-                    recadosContainer.innerHTML = '<p style="text-align:center; width:100%;">Seja o primeiro a deixar um recado!</p>';
                 }
 
-                // Remove Loader
-                document.getElementById('loader').style.opacity = '0';
-                setTimeout(() => document.getElementById('loader').remove(), 500);
-                
-                // Re-inicializa reveals
-                setTimeout(initAnimations, 100);
+                // 4. Recados (Aprovados)
+                const recadosReq = await fetch(`${DIRECTUS_URL}/items/recados?filter[status][_eq]=published&sort=-date_created&limit=6`);
+                if (recadosReq.ok) {
+                    const recadosData = await recadosReq.json();
+                    const recadosContainer = document.getElementById('recados-container');
+                    
+                    if(recadosData.data && recadosData.data.length > 0) {
+                        recadosContainer.innerHTML = '';
+                        recadosData.data.forEach(msg => {
+                            const html = `
+                            <div class="message-item reveal">
+                                <p>"${msg.mensagem}"</p>
+                                <span style="display:block; margin-top:1rem; font-weight:700;">— ${msg.nome_remetente}</span>
+                            </div>`;
+                            recadosContainer.innerHTML += html;
+                        });
+                    } else {
+                        recadosContainer.innerHTML = '<p style="text-align:center; width:100%;">Seja o primeiro a deixar um recado!</p>';
+                    }
+                }
 
             } catch (error) {
                 console.error("Erro ao carregar dados:", error);
-                document.getElementById('loader').innerText = "Erro ao carregar o site.";
+                // Em caso de erro, o site mantém os textos estáticos do HTML original (fallback)
+            } finally {
+                // Remove tela de loading
+                const loader = document.getElementById('loader-overlay');
+                if(loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => loader.remove(), 500);
+                }
             }
         }
 
-        // --- ENVIAR FORMS ---
-
-        // RSVP
-        document.getElementById('rsvp-form').addEventListener('submit', async (e) => {
+        // --- ENVIAR DADOS (FORMS) ---
+        
+        // Form RSVP
+        const rsvpForm = document.getElementById('rsvp-form');
+        rsvpForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const btn = e.target.querySelector('button');
-            const originalText = btn.innerText;
-            btn.innerText = 'Enviando...';
+            const btn = rsvpForm.querySelector('button');
+            btn.textContent = 'Enviando...';
+            btn.disabled = true;
 
             const payload = {
                 codigo_convite: document.getElementById('rsvp_code').value,
@@ -658,84 +701,103 @@
             };
 
             try {
-                const res = await fetch(`${DIRECTUS_URL}/items/rsvp`, {
+                const response = await fetch(`${DIRECTUS_URL}/items/rsvp`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-                
-                if(res.ok) {
-                    document.getElementById('rsvp-form').style.display = 'none';
+
+                if(response.ok) {
+                    rsvpForm.style.display = 'none';
                     document.getElementById('form-feedback').style.display = 'block';
                 } else {
-                    throw new Error('Erro no envio');
+                    alert('Erro ao enviar. Tente novamente.');
+                    btn.textContent = 'Tentar Novamente';
+                    btn.disabled = false;
                 }
             } catch (err) {
-                document.getElementById('form-error').style.display = 'block';
-                btn.innerText = originalText;
+                console.error(err);
+                alert('Erro de conexão.');
+                btn.disabled = false;
             }
         });
 
-        // Recados
-        document.getElementById('message-form').addEventListener('submit', async (e) => {
+        // Form Recados
+        const msgForm = document.getElementById("message-form");
+        msgForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const btn = e.target.querySelector('button');
-            btn.innerText = 'Enviando...';
+            const btn = msgForm.querySelector('button');
+            btn.textContent = 'Enviando...';
+            btn.disabled = true;
 
             const payload = {
-                status: 'draft', // Vai para aprovação
                 nome_remetente: document.getElementById('msg_name').value,
                 codigo_convite: document.getElementById('msg_code').value,
-                mensagem: document.getElementById('message_text').value
+                mensagem: document.getElementById('message_text').value,
+                status: 'draft' // Salva como rascunho para você aprovar depois
             };
 
             try {
-                await fetch(`${DIRECTUS_URL}/items/recados`, {
+                const response = await fetch(`${DIRECTUS_URL}/items/recados`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-                
-                document.getElementById('message-form').style.display = 'none';
-                document.getElementById('message-feedback').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById("messageModal").style.display = "none";
-                }, 2000);
 
+                if(response.ok) {
+                    msgForm.style.display = 'none';
+                    document.getElementById('message-feedback').style.display = 'block';
+                    setTimeout(() => {
+                        document.getElementById("messageModal").style.display = "none";
+                        msgForm.reset();
+                        msgForm.style.display = 'block';
+                        document.getElementById('message-feedback').style.display = 'none';
+                        btn.textContent = 'Enviar para Aprovação';
+                        btn.disabled = false;
+                    }, 2500);
+                } else {
+                    alert('Erro ao enviar mensagem.');
+                    btn.textContent = 'Tentar Novamente';
+                    btn.disabled = false;
+                }
             } catch (err) {
-                alert("Erro ao enviar mensagem.");
-                btn.innerText = 'Tentar Novamente';
+                console.error(err);
+                alert('Erro de conexão.');
+                btn.disabled = false;
             }
         });
 
-        // --- EFEITOS VISUAIS (Mantidos do original) ---
-        function initAnimations() {
-            // Chuva de Flores
-            const flowerContainer = document.getElementById('flower-fall-container');
-            const flowerImages = ['flor1.png', 'flor2.png', 'flor3.png', 'flor4.png']; // Certifique-se que essas imagens existem na pasta public ou static
-            // (Nota: Se quiser puxar flores do banco, precisaria alterar aqui também)
-
-            function createFlower() {
-                const flower = document.createElement('div');
-                flower.classList.add('falling-flower');
-                const size = Math.random() * (30 - 15) + 15; 
-                const startX = Math.random() * window.innerWidth;
-                const duration = Math.random() * (12 - 7) + 7; 
-                // Placeholder se as imagens não existirem localmente
-                // flower.style.backgroundImage = `url('flor1.png')`; 
-                flowerContainer.appendChild(flower);
-                setTimeout(() => { flower.remove(); }, duration * 1000);
-            }
-            // setInterval(createFlower, 600); // Descomente se tiver as imagens
-
-            // Reveal
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('active');
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        // --- EFEITOS VISUAIS (CHUVA, SLIDESHOW, REVEAL) ---
+        
+        // Chuva de Flores
+        const flowerContainer = document.getElementById('flower-fall-container');
+        // Usa nomes de arquivos locais. Se não existirem, não aparecerão.
+        const flowerImages = ['flor1.png', 'flor2.png', 'flor3.png', 'flor4.png']; 
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('falling-flower');
+            const size = Math.random() * (30 - 15) + 15; 
+            const startX = Math.random() * window.innerWidth;
+            const duration = Math.random() * (12 - 7) + 7; 
+            const img = flowerImages[Math.floor(Math.random() * flowerImages.length)];
+            flower.style.width = `${size}px`; flower.style.height = `${size}px`; flower.style.left = `${startX}px`;
+            flower.style.backgroundImage = `url('${img}')`; flower.style.animationDuration = `${duration}s`;
+            flowerContainer.appendChild(flower);
+            setTimeout(() => { flower.remove(); }, duration * 1000);
         }
+        setInterval(createFlower, 600);
+
+        // Slideshow
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        function nextSlide() {
+            if(slides.length > 0) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+        }
+        setInterval(nextSlide, 6000);
 
         // Header Scroll
         window.addEventListener('scroll', () => {
@@ -744,7 +806,7 @@
             else header.classList.remove('scrolled');
         });
 
-        // Mobile Menu
+        // Menu Mobile
         const mobileToggle = document.getElementById('mobile-toggle');
         const navMenu = document.getElementById('nav-menu');
         mobileToggle.addEventListener('click', () => {
@@ -753,13 +815,17 @@
             mobileToggle.querySelector('i').classList.toggle('fa-times');
         });
 
-        // Modal
-        const modal = document.getElementById("messageModal");
-        const btnOpenModal = document.getElementById("btn-open-modal");
-        const spanClose = document.getElementsByClassName("close-modal")[0];
-        btnOpenModal.onclick = function() { modal.style.display = "block"; }
-        spanClose.onclick = function() { modal.style.display = "none"; }
-        window.onclick = function(event) { if (event.target == modal) modal.style.display = "none"; }
+        // Reveal Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        
+        // Verifica novos elementos periodicamente (para conteúdo carregado via AJAX)
+        setInterval(() => {
+            document.querySelectorAll('.reveal:not(.active)').forEach(el => observer.observe(el));
+        }, 1000);
 
         // Copiar PIX
         const btnCopyPix = document.getElementById('btn-copy-pix');
@@ -776,6 +842,15 @@
                 }, 2000);
             });
         });
+
+        // Modal Lógica
+        const modal = document.getElementById("messageModal");
+        const btnOpenModal = document.getElementById("btn-open-modal");
+        const spanClose = document.getElementsByClassName("close-modal")[0];
+
+        btnOpenModal.onclick = function() { modal.style.display = "block"; }
+        spanClose.onclick = function() { modal.style.display = "none"; }
+        window.onclick = function(event) { if (event.target == modal) modal.style.display = "none"; }
 
         // INICIAR TUDO
         window.addEventListener('DOMContentLoaded', loadSiteData);
