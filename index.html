@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- MANTIDO TODO O CSS ORIGINAL --- */
+        /* --- CSS MANTIDO IGUAL --- */
         :root {
             --primary: #2D4A6E; 
             --primary-light: #5B7AA5;
@@ -34,7 +34,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Loading Overlay (Adicionado discreto) */
+        /* Loading Overlay */
         #loader-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #fff; z-index: 99999;
@@ -42,10 +42,9 @@
             flex-direction: column; transition: opacity 0.5s ease;
         }
 
-        /* --- Chuva de Flores --- */
+        /* Chuva de Flores */
         #flower-fall-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none; z-index: 9999; overflow: hidden;
         }
         .falling-flower {
@@ -59,7 +58,7 @@
             100% { transform: translateY(110vh) rotate(360deg) translateX(50px); opacity: 0; }
         }
 
-        /* --- Reveal --- */
+        /* Reveal */
         .reveal { opacity: 0; transform: translateY(50px); transition: var(--transition); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -80,7 +79,7 @@
         .nav-links a:hover { color: var(--primary); opacity: 1; }
         .mobile-toggle { display: none; cursor: pointer; font-size: 1.5rem; color: var(--primary); z-index: 1001; }
 
-        /* --- HERO --- */
+        /* HERO */
         #home { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
         .slideshow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
         .slide {
@@ -124,7 +123,7 @@
         .section-header { text-align: center; margin-bottom: 80px; }
         .section-header h2 { font-size: 3.5rem; font-family: var(--font-serif); color: var(--primary); font-weight: 500; }
 
-        /* --- Nossa História (CRÍTICO: Mantido o nth-child para alternar os lados) --- */
+        /* História */
         #historia {
             padding-top: 70px; padding-bottom: 70px; background-color: var(--bg-section);
             background-image: radial-gradient(circle at 10% 20%, rgba(165, 196, 212, 0.2) 0%, transparent 40%),
@@ -132,14 +131,12 @@
         }
         .history-card { display: flex; gap: 5rem; margin-bottom: 10rem; align-items: center; }
         #historia .history-card:last-of-type { margin-bottom: 5rem; }
-        
-        /* ESTA LINHA FAZ O ZIG-ZAG (FOTO NA ESQUERDA, FOTO NA DIREITA) */
         .history-card:nth-child(even) { flex-direction: row-reverse; }
 
         .history-img-box { flex: 1.2; position: relative; }
         .history-img-box img {
             width: 100%; height: 450px; object-fit: cover;
-            border-radius: 120px 30px 120px 30px; /* Borda estilo "Aguarela" mantida */
+            border-radius: 120px 30px 120px 30px; 
             box-shadow: 25px 25px 70px rgba(0,0,0,0.06); transition: var(--transition);
         }
         .history-card:hover .history-img-box img { transform: scale(1.03) rotate(1deg); }
@@ -251,23 +248,7 @@
             </div>
 
             <div id="historia-container">
-                <div class="history-card reveal">
-                    <div class="history-img-box"><img src="historia1.png" alt="O Início"></div>
-                    <div class="history-text-box">
-                        <span class="history-tag">2018</span>
-                        <h3>O Primeiro Olhar</h3>
-                        <p>Nos conhecemos em uma cafeteria num dia chuvoso.</p>
-                    </div>
                 </div>
-                <div class="history-card reveal">
-                    <div class="history-img-box"><img src="historia2.png" alt="A Certeza"></div>
-                    <div class="history-text-box">
-                        <span class="history-tag">2020</span>
-                        <h3>A Certeza</h3>
-                        <p>Durante uma viagem inesquecível...</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -278,13 +259,7 @@
             </div>
             
             <div class="events-grid" id="eventos-container">
-                <div class="event-card reveal">
-                    <i class="fas fa-church"></i>
-                    <h3>Cerimônia</h3>
-                    <p>27 de Fevereiro de 2026<br>16:30h</p>
-                    <p style="margin-top: 10px; font-weight: 700;">Local a definir</p>
                 </div>
-            </div>
 
             <div class="map-wrapper reveal">
                 <iframe id="mapa-iframe" src="" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -322,11 +297,7 @@
                 </div>
             </div>
             <div class="messages-grid" id="recados-container">
-                <div class="message-item reveal">
-                    <p>"Estamos muito felizes por fazer parte deste dia!"</p>
-                    <span style="display:block; margin-top:1rem; font-weight:700;">— Amigos</span>
                 </div>
-            </div>
         </div>
     </section>
 
@@ -354,7 +325,7 @@
             </div>
             <div class="rsvp-container reveal">
                 <form id="rsvp-form">
-                    <input type="text" id="rsvp_code" class="form-control" placeholder="Código do Convite" required>
+                    <input type="text" id="rsvp_code" class="form-control" placeholder="Código do Convite (Ex: 0001)" required>
                     <input type="text" id="rsvp_name" class="form-control" placeholder="Seu Nome Completo" required>
                     <input type="email" id="rsvp_email" class="form-control" placeholder="Seu e-mail" required>
                     <select id="rsvp_guests" class="form-control">
@@ -380,7 +351,6 @@
     </footer>
 
     <script>
-        // --- CONFIGURAÇÃO ---
         const DIRECTUS_URL = "https://eventosdirectus.leanttro.com"; 
 
         function getImgUrl(fileId) {
@@ -390,14 +360,11 @@
 
         async function loadSiteData() {
             try {
-                // 1. Configurações Gerais
+                // 1. Configurações
                 const configReq = await fetch(`${DIRECTUS_URL}/items/configuracoes_gerais`);
                 const configResponse = await configReq.json();
-                
                 let config = null;
-                if (configResponse.data) {
-                    config = Array.isArray(configResponse.data) ? configResponse.data[0] : configResponse.data;
-                }
+                if (configResponse.data) config = Array.isArray(configResponse.data) ? configResponse.data[0] : configResponse.data;
 
                 if(config) {
                     document.title = config.titulo_site || "Casamento";
@@ -405,26 +372,17 @@
                     if(document.getElementById('hero-title')) document.getElementById('hero-title').innerText = config.titulo_site;
                     if(document.getElementById('footer-logo')) document.getElementById('footer-logo').innerText = config.titulo_site;
                     if(document.getElementById('hero-subtitle')) document.getElementById('hero-subtitle').innerText = config.subtitulo_hero;
-                    
                     if(document.getElementById('texto-casal')) document.getElementById('texto-casal').innerText = config.texto_casal;
                     if(document.getElementById('assinatura-casal')) document.getElementById('assinatura-casal').innerText = config.titulo_site;
-                    
                     if(document.getElementById('pix-key-text')) document.getElementById('pix-key-text').innerText = config.chave_pix;
                     
-                    // Mapa (Só atualiza se existir para não dar 404)
-                    if(document.getElementById('mapa-iframe') && config.iframe_mapa) {
-                        document.getElementById('mapa-iframe').src = config.iframe_mapa;
-                    }
-
+                    if(document.getElementById('mapa-iframe') && config.iframe_mapa) document.getElementById('mapa-iframe').src = config.iframe_mapa;
                     if(document.getElementById('link-lista-1')) document.getElementById('link-lista-1').href = config.link_lista_1 || "#";
                     if(document.getElementById('link-lista-2')) document.getElementById('link-lista-2').href = config.link_lista_2 || "#";
 
-                    if(config.foto_casal) {
-                        document.getElementById('casal-foto').src = getImgUrl(config.foto_casal);
-                    }
+                    if(config.foto_casal) document.getElementById('casal-foto').src = getImgUrl(config.foto_casal);
                     
-                    // ATUALIZAÇÃO DO SLIDESHOW DO BANNER
-                    // Pega os elementos .slide e atualiza o background se houver imagem no Directus
+                    // Banner Slides
                     const slideElements = document.querySelectorAll('.slide');
                     if (config.banner_1 && slideElements[0]) slideElements[0].style.backgroundImage = `url('${getImgUrl(config.banner_1)}')`;
                     if (config.banner_2 && slideElements[1]) slideElements[1].style.backgroundImage = `url('${getImgUrl(config.banner_2)}')`;
@@ -438,21 +396,17 @@
                     }
                 }
 
-                // 2. História (MANTENDO O LAYOUT ALTERNADO)
+                // 2. História
                 const histReq = await fetch(`${DIRECTUS_URL}/items/historia?sort=sort`);
                 const histData = await histReq.json();
                 const histContainer = document.getElementById('historia-container');
-                
-                if(histData.data && Array.isArray(histData.data) && histData.data.length > 0) {
-                    histContainer.innerHTML = ''; // Limpa o padrão
+                if(histData.data && histData.data.length > 0) {
+                    histContainer.innerHTML = ''; 
                     histData.data.forEach((item) => {
                         const imgUrl = getImgUrl(item.foto) || 'historia1.png';
-                        // AQUI ESTÁ A MÁGICA: A classe 'history-card' é igual ao original, então o CSS nth-child funciona
                         const html = `
                         <div class="history-card reveal">
-                            <div class="history-img-box">
-                                <img src="${imgUrl}" alt="${item.titulo}">
-                            </div>
+                            <div class="history-img-box"><img src="${imgUrl}" alt="${item.titulo}"></div>
                             <div class="history-text-box">
                                 <span class="history-tag">${item.ano}</span>
                                 <h3>${item.titulo}</h3>
@@ -467,15 +421,13 @@
                 const eventReq = await fetch(`${DIRECTUS_URL}/items/eventos?sort=sort`);
                 const eventData = await eventReq.json();
                 const eventContainer = document.getElementById('eventos-container');
-                
-                if(eventData.data && Array.isArray(eventData.data) && eventData.data.length > 0) {
+                if(eventData.data && eventData.data.length > 0) {
                     eventContainer.innerHTML = ''; 
                     eventData.data.forEach(item => {
                         const dataEvento = new Date(item.data_hora);
                         const dia = dataEvento.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
                         const hora = dataEvento.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
                         const iconeClass = item.icone || 'fa-calendar-alt';
-
                         const html = `
                         <div class="event-card reveal">
                             <i class="fas ${iconeClass}"></i>
@@ -492,7 +444,6 @@
                 if (recadosReq.ok) {
                     const recadosData = await recadosReq.json();
                     const recadosContainer = document.getElementById('recados-container');
-                    
                     if(recadosData.data && recadosData.data.length > 0) {
                         recadosContainer.innerHTML = '';
                         recadosData.data.forEach(msg => {
@@ -507,14 +458,14 @@
                 }
 
             } catch (error) {
-                console.error("Usando modo offline (erro API):", error);
+                console.error("Erro API:", error);
             } finally {
                 const loader = document.getElementById('loader-overlay');
                 if(loader) { loader.style.opacity = '0'; setTimeout(() => loader.remove(), 500); }
             }
         }
 
-        // --- SCRIPTS VISUAIS ORIGINAIS (CHUVA, SLIDES, ETC) ---
+        // --- INTERAÇÕES ---
         const flowerContainer = document.getElementById('flower-fall-container');
         const flowerImages = ['flor1.png', 'flor2.png', 'flor3.png', 'flor4.png'];
         function createFlower() {
@@ -578,23 +529,54 @@
         spanClose.onclick = function() { modal.style.display = "none"; }
         window.onclick = function(event) { if (event.target == modal) modal.style.display = "none"; }
 
-        // Form RSVP
+        // --- RSVP COM VALIDAÇÃO ---
         const rsvpForm = document.getElementById('rsvp-form');
         rsvpForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = rsvpForm.querySelector('button');
-            btn.textContent = 'Enviando...'; btn.disabled = true;
+            const codeInput = document.getElementById('rsvp_code').value.trim();
+            
+            btn.textContent = 'Verificando convite...'; btn.disabled = true;
+            
             try {
+                // 1. Validar Código
+                // Nota: Certifique-se que a coleção 'convidados' tem permissão de LEITURA Pública no Directus
+                const checkReq = await fetch(`${DIRECTUS_URL}/items/convidados?filter[codigo][_eq]=${codeInput}`);
+                const checkData = await checkReq.json();
+
+                if (!checkData.data || checkData.data.length === 0) {
+                    alert('Código de convite inválido ou não encontrado.');
+                    btn.textContent = 'Confirmar Agora'; btn.disabled = false;
+                    return;
+                }
+
+                // Código válido, prosseguir com o envio
+                btn.textContent = 'Enviando...';
                 const payload = {
-                    codigo_convite: document.getElementById('rsvp_code').value,
+                    codigo_convite: codeInput,
                     nome_completo: document.getElementById('rsvp_name').value,
                     email: document.getElementById('rsvp_email').value,
                     qtd_convidados: parseInt(document.getElementById('rsvp_guests').value)
                 };
-                const res = await fetch(`${DIRECTUS_URL}/items/rsvp`, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload)});
-                if(res.ok) { rsvpForm.style.display='none'; document.getElementById('form-feedback').style.display='block'; }
-                else { alert('Erro.'); btn.disabled=false; btn.textContent='Confirmar Agora'; }
-            } catch(e) { alert('Erro de conexão'); btn.disabled=false; }
+                
+                const res = await fetch(`${DIRECTUS_URL}/items/rsvp`, { 
+                    method: 'POST', 
+                    headers: {'Content-Type':'application/json'}, 
+                    body: JSON.stringify(payload)
+                });
+
+                if(res.ok) { 
+                    rsvpForm.style.display='none'; 
+                    document.getElementById('form-feedback').style.display='block'; 
+                } else { 
+                    alert('Erro ao confirmar. Tente novamente.'); 
+                    btn.disabled=false; btn.textContent='Confirmar Agora'; 
+                }
+            } catch(e) { 
+                console.error(e);
+                alert('Erro de conexão com o servidor.'); 
+                btn.disabled=false; btn.textContent='Confirmar Agora';
+            }
         });
 
         // Form Recados
