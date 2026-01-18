@@ -422,6 +422,13 @@
                     if(config.foto_casal) {
                         document.getElementById('casal-foto').src = getImgUrl(config.foto_casal);
                     }
+                    
+                    // ATUALIZAÇÃO DO SLIDESHOW DO BANNER
+                    // Pega os elementos .slide e atualiza o background se houver imagem no Directus
+                    const slideElements = document.querySelectorAll('.slide');
+                    if (config.banner_1 && slideElements[0]) slideElements[0].style.backgroundImage = `url('${getImgUrl(config.banner_1)}')`;
+                    if (config.banner_2 && slideElements[1]) slideElements[1].style.backgroundImage = `url('${getImgUrl(config.banner_2)}')`;
+                    if (config.banner_3 && slideElements[2]) slideElements[2].style.backgroundImage = `url('${getImgUrl(config.banner_3)}')`;
 
                     if(config.data_casamento) {
                         const dataObj = new Date(config.data_casamento);
