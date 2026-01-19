@@ -197,10 +197,20 @@
             /* CORREÇÃO DO BOTÃO RSVP MOBILE */
             #rsvp-form .btn-hero {
                 width: 100% !important;
-                padding: 1.2rem 0; /* Remove padding lateral para dar espaço ao texto */
-                letter-spacing: 2px; /* Reduz espaçamento para evitar quebra */
-                font-size: 0.8rem; /* Ajusta levemente a fonte */
-                white-space: nowrap; /* Garante que fique em uma linha */
+                padding: 1.2rem 0; 
+                letter-spacing: 2px; 
+                font-size: 0.8rem; 
+                white-space: nowrap; 
+            }
+
+            /* CORREÇÃO DA DATA HERO MOBILE */
+            .hero-date {
+                font-size: 1.5rem; /* Fonte menor */
+                gap: 10px; /* Menos espaço entre itens */
+                white-space: nowrap; /* Impede quebra de linha */
+            }
+            .hero-date::before, .hero-date::after {
+                width: 20px; /* Linhas laterais menores para dar espaço */
             }
         }
     </style>
